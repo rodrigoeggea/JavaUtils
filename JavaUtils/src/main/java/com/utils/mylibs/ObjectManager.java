@@ -13,33 +13,35 @@ import java.io.ObjectOutputStream;
  */
 public class ObjectManager {
 
-	/**
-	 * Escreve objeto para um arquivo.
-	 * @param object 
-	 * @param filename
-	 * @throws Exception
-	 */
-	public static void writeToFile(Object object, String filename) throws Exception {
-		FileOutputStream f = new FileOutputStream(new File(filename));
-		ObjectOutputStream os = new ObjectOutputStream(f);
-		os.writeObject(object);
-		os.close();
-		f.close();
-	}
+    /**
+     * Escreve objeto para um arquivo.
+     * 
+     * @param object
+     * @param filename
+     * @throws Exception
+     */
+    public static void writeToFile(Object object, String filename) throws Exception {
+        FileOutputStream f = new FileOutputStream(new File(filename));
+        ObjectOutputStream os = new ObjectOutputStream(f);
+        os.writeObject(object);
+        os.close();
+        f.close();
+    }
 
-	/**
-	 * Restaura um objeto de um arquivo.
-	 * @param filename
-	 * @return
-	 * @throws Exception
-	 */
-	@SuppressWarnings("unchecked")
-	public static <T> T readFromFile(String filename) throws Exception {
-		FileInputStream fi = new FileInputStream(new File(filename));
-		ObjectInputStream oi = new ObjectInputStream(fi);
-		T object = (T) oi.readObject();
-		oi.close();
-		fi.close();
-		return object;
-	}
+    /**
+     * Restaura um objeto de um arquivo.
+     * 
+     * @param filename
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T readFromFile(String filename) throws Exception {
+        FileInputStream fi = new FileInputStream(new File(filename));
+        ObjectInputStream oi = new ObjectInputStream(fi);
+        T object = (T) oi.readObject();
+        oi.close();
+        fi.close();
+        return object;
+    }
 }
